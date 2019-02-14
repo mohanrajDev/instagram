@@ -1,0 +1,32 @@
+
+
+class InstagramPostFactory:
+
+    def __init__(self, username):
+        self.username = username   
+     
+    def get(self):
+        return InstgaramRequest.handle(self.username)
+
+
+class InstagramFollowersFactory:
+
+    def __init__(self, username):
+        self.username = username   
+     
+    def get(self):
+        return InstgaramRequest.handle(self.username)
+
+
+
+
+
+
+
+    # @classmethod
+    # def posts(self, username):
+    #     return InstagramPostFactory(username)
+
+    # @classmethod
+    # def followers(self, username):
+    #     return InstagramFollowersFactory(username)
