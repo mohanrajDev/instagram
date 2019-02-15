@@ -38,7 +38,7 @@ class InstgaramRequest:
 
     @classmethod
     def followers(self, profile_id, end_cursor):
-        url = 'https://www.instagram.com/graphql/query/?query_hash=56066f031e6239f35a904ac20c9f37d9&variables={%22id%22:%22' + str(profile_id) +'%22,%22include_reel%22:true,%22fetch_mutual%22:false,%22first%22:50,%22after%22:"' + end_cursor + '"}'
+        url = 'https://www.instagram.com/graphql/query/?query_hash=56066f031e6239f35a904ac20c9f37d9&variables={"id":"' + str(profile_id) +'","include_reel":true,"fetch_mutual":false,"first":50,"after":"' + end_cursor + '"}'
         print(url)
         response =  requests.get(url, headers=self.headers1)
         print(response)
@@ -46,3 +46,18 @@ class InstgaramRequest:
             return response.content
         else:
             return None
+
+    
+    @classmethod
+    def follows(self, profile_id, end_cursor):
+        url = 'https://www.instagram.com/graphql/query/?query_hash=c56ee0ae1f89cdbd1c89e2bc6b8f3d18&variables={"id":"' + str(profile_id) +'","include_reel":true,"fetch_mutual":false,"first":50,"after":"' + end_cursor + '"}'
+        print(url)
+        response =  requests.get(url, headers=self.headers1)
+        print(response)
+        if response.status_code == 200:
+            return response.content
+        else:
+            return None
+
+
+# https://www.instagram.com/graphql/query/?query_hash=c56ee0ae1f89cdbd1c89e2bc6b8f3d18&variables={"id":"' + str(profile_id) +'","include_reel":true,"fetch_mutual":false,"first":50,"after":"' + + '"}

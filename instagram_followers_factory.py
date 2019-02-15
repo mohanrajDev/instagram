@@ -11,9 +11,11 @@ class InstagramFollowersFactory:
     @classmethod
     def get(self, profile_id, end_cursor):
         self.__instance = InstagramFollowersFactory(profile_id)
-        response = InstgaramRequest.followers(profile_id, end_cursor)
+        # response = InstgaramRequest.followers(profile_id, end_cursor)
+        response = InstgaramRequest.follows(profile_id, end_cursor)
         api_data = json.loads(response)
-        self.raw_followers = api_data['data']['user']['edge_followed_by']
+        # self.raw_followers = api_data['data']['user']['edge_followed_by']
+        self.raw_followers = api_data['data']['user']['edge_follow']
 
         self.next = self.raw_followers['page_info']['has_next_page']
         self.cursor = self.raw_followers['page_info']['end_cursor']

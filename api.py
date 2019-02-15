@@ -8,12 +8,18 @@ class Instagram:
         return InstagramFactory.handle(username)
 
     @classmethod
-    def getFollowers(self, profile, cursor):
+    def getFollowers(self, profile, cursor=""):
         if not isinstance(profile, int):
            profile = InstagramFactory.handle(profile).id 
 
         return InstagramFollowersFactory.get(profile, cursor)
 
+    @classmethod
+    def getFollows(self, profile, cursor=""):
+        if not isinstance(profile, int):
+           profile = InstagramFactory.handle(profile).id 
+
+        return InstagramFollowersFactory.get(profile, cursor)
 
 
 
